@@ -18,3 +18,26 @@ hx标题标签自动加粗
 空标签 <br /> <hr /> <img />
 空格 &nbsp;
 <address 地址标签
+<code 引用代码
+<pre 引用大段代码 内可保留空格和换行符
+<div
+<table{
+tbody
+caption标签，为表格添加标题和摘要
+<table summary=  摘要
+}
+
+<a href table=""用于提示信息，鼠标移至。。时显示内容
+电子邮件相关内容（如下
+http://img.mukewang.com/52da4f2a000150b714280550.jpg
+注意：电子邮件里面的subject和body不用加双引号
+<img{
+src alt title(提示文本
+
+<form method="post/get" action="" 表单
+<input   type="text/ password/ textarea/        name=" " value="网页中的提示内容"
+        type="radio(单选框） checkbox(复选框）  selected="selected"
+      multiple="multiple"
+    
+      
+        
