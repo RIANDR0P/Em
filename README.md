@@ -38,6 +38,11 @@ src alt title(提示文本
 <input   type="text/ password/ textarea/        name=" " value="网页中的提示内容"
         type="radio(单选框） checkbox(复选框）  selected="selected"
       multiple="multiple"
-    
-      
-        
+    type="submit reset
+    placeholder 提供可描述输入字段预期值的提示信息（hint）。
+该提示会在输入字段为空时显示，并会在字段获得焦点时消失  
+   <lable 标签 
+  
+css
+<link href="style.css" rel="stylesheet" type="text/css" />
+
