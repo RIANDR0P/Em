@@ -45,4 +45,27 @@ src alt title(提示文本
   
 css
 <link href="style.css" rel="stylesheet" type="text/css" />
+class与id 区别 ： id只能引用一次，class 可无限次引用
+css中，class前面为. 即.class ,而id为#id     分别称为类选择器和id选择器
+子选择器，用于有子选项 >
+注意与后代选择器的区别  (空格
+分组 ,字符（同时为多个对象添加相同样式
+!important 最高权值   大于用户自己设置权值
+italic斜体  text-decoration   underline 下划线 line-through
+text-indet 首字缩进
+line-height 行间距（行高
+letter/word-spacing
 
+在讲解CSS布局之前，我们需要提前知道一些知识，在CSS中，html中的标签元素大体被分为三种不同的类型：块状元素、内联元素(又叫行内元素)和内联块状元素。
+常用的块状元素有：
+<div>、<p>、<h1>...<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>
+常用的内联元素有：
+<a>、<span>、<br>、<i>、<em>、<strong>、<label>、<q>、<var>、<cite>、<code>
+常用的内联块状元素有：
+<img>、<input>
+display-block/inline incline-block
+   dashed dotted solid
+        
+modern flow float layer
+float 浮动
+sans-serif 英文字体设置
