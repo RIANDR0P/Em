@@ -22,3 +22,5 @@
      null；
      注意：通常要初始化变量，方便后期(typeof返回undefined时是未声明而不是未初始化)
      boolean类型 利用Boolean()（转型函数）转为对应boolean值
+     
+  
