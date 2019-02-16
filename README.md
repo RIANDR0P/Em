@@ -8,3 +8,37 @@ ii.变量名开头不要用下划线_
 
 iii. cout << hex; //16进制；
      cout << oct；  //8进制；
+
+cin.getline
+cin.get()
+cin.get(name,lim).get();  //跳过结尾换行符
+
+cin >> str;
+cin.get();
+或
+(cin >> str).get();
+
+int len1=str1.size();
+
+getline(cin,str);  //用于string
+
+union 共用体
+enum 枚举
+
+谨记：将指针初始化为确定的地址
+
+数据对象P102
+
+int * p= new int ;
+>>>
+delete *p;
+
+int * p= new int [10];
+...
+delete [] p;
+
+关于new与delete:
+1/ delete用于new划分的内存
+2/ 不要释放一个内存两次
+3/ 有无方括号应一致；
+4/ 改变指针变量最后应返回初始值delete
