@@ -42,3 +42,15 @@ delete [] p;
 2/ 不要释放一个内存两次
 3/ 有无方括号应一致；
 4/ 改变指针变量最后应返回初始值delete
+
+键盘模拟 EOF 
+while((ch=cin.get())!=EOF)
+
+注：strcmp(a,b)函数当二者不等时返回真值
+
+#include<cctype>
+     if(isalpha(ch))
+     //isalpha,isdigits,isplace,ispunct
+     
+switch无法处理浮点值。
+switch效率高于if else
