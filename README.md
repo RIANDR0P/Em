@@ -93,3 +93,15 @@ ifstream
       //break; //不符合时直接跳出
    }
   
+
+#处理字符串
+     while(*str)
+     {
+          statement;
+          str++；
+     }
+
+7.8 函数与array对象
+
+引用
+int & array=rabbit;      //必须初始化   
