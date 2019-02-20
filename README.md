@@ -54,3 +54,42 @@ while((ch=cin.get())!=EOF)
      
 switch无法处理浮点值。
 switch效率高于if else
+
+ofstream
+#include<fstream>
+     ofstream outfile;
+     outfile.open("new.text");
+     ...
+     outfile.close;
+     
+ifstream
+
+#include<cstdlib)
+     ifstream infile;
+     infile.open("list.text")
+     if(!infile.is_open())
+     {
+          exit(EXIT.FAILURE);
+          
+ #5.5.4文件尾条件 eof fail
+     
+     函数与数组
+     调用函数时，可以：
+     arr(cook+4,5)   //cook为指针
+     
+  7.4 函数和二维数组
+  
+  void array(int (*ar)[4], int n)   // n固定列数
+  原： row=3;column=4;
+  
+  
+  处理不符合类型：
+  if(!cin)
+  {
+     cin.clear;
+     while(cin.get()!='\n')
+          continue;
+      cout<<"Please enter: ";
+      //break; //不符合时直接跳出
+   }
+  
