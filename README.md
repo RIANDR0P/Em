@@ -105,3 +105,37 @@ ifstream
 
 引用
 int & array=rabbit;      //必须初始化   
+
+8.5 函数模板
+template<typename T>
+void swap(T &a, T &b)；
+     ...
+template<typename T>
+void swap(T &a, T &b)
+{
+     T temp;
+     temp=a;
+     a=b;
+     b=temp;
+}
+     
+8.5.1 重载模板
+template<typename T>
+void swap(T &a, T &b);
+     
+template<typename T>
+void swap(T &a, T &b, int c);
+     
+8.5.3 显式具体化
+struct job
+{
+     ...
+}
+template <> void swap<job>(job &j1, job &j2);
+     
+#cout.setf
+cout.setf()的作用是通过设置格式标志来控制输出形式，
+其中ios_base::fixed表示：用正常的记数方法显示浮点数(与科学计数法相对应)；
+ios_base::floatfield表示小数点后保留6位小数。
+
+   
