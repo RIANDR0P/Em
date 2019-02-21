@@ -172,4 +172,16 @@ ios_base::floatfield表示小数点后保留6位小数。
 #ifndef
 ...
 #endif
-   
+9.2
+静态初始化
+1/ 位于代码块内 无链接
+2/ 函数外       用于当前文件，内部链接
+3/ static       外部链接
+
+9.2.4
+引用外部变量
+extern int blem;   //此时为引用声明（declaration)
+定义(definition)
+1/ extern int blem=10;
+2/ int blem=10;
+3/ int blem;
