@@ -185,3 +185,47 @@ extern int blem;   //此时为引用声明（declaration)
 1/ extern int blem=10;
 2/ int blem=10;
 3/ int blem;
+
+9.2.5
+定义外部变量后，若在其他文件定义相同变量，不合法。（违反单定义规则
+     需添加 static 隐藏常规外部变量
+     
+处理行输入超过目标数组
+#include<iostream>
+const int ARSIZE = 10;
+void strcount(char * str);
+
+using namespace std;
+
+int main()
+{
+
+	char input[ARSIZE];
+	char next;
+	cin.get(input, ARSIZE);
+	while (cin)
+	{
+		cin.get(next);
+		while (next != '\n')
+			cin.get(next);
+		strcount(input);
+		cin.get(input, ARSIZE);
+	}
+	return 0;
+}
+
+
+
+void strcount(char * str)
+{	 int count = 0;
+	while (*str++)
+		count++;
+	cout << count << endl;
+}
+
+// count 可能命名重复，可换一个关键词 //定义全局变量时
+
+9.2.7
+cv-限定符
+volatile 
+mutable
