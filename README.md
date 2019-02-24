@@ -229,3 +229,39 @@ void strcount(char * str)
 cv-限定符
 volatile 
 mutable
+const 全局变量的链接性为内部，即在多文件中默认每个源文件添加const int..（可理解为static
+若希望链接性为外部，可利用extern 覆盖默认，但相关所有文件必须用extern声明。
+9.2.8
+函数默认链接性为外部
+可利用static设定其链接性为内部
+但函数定义及原型必须加上static关键字。
+
+定位运算符new
+不跟踪哪些内存单元已被使用，不查找未使用内存块。
+参数 std::size_t 指定请求字节数
+#include<iostream>
+#include<new>
+const int BUF= 512;
+const int N = 5;
+char butter[BUF];
+int main()
+{
+	using namespace std;
+	double *pd1, *pd2;
+	int i;
+	pd1 = new double[N];
+	pd2 = new(butter) double[N];
+	for (i = 0; i < N; i++)
+		pd2[i] = pd1[i] = 1000 + 20 * i;
+	cout << "adress:\n" << "heap: " << pd1
+		<< "static: " << (void*)butter << endl;   //不使用(void*)强制转换将打印出字符串（butter为char*)
+	for (i = 0; i < N; i++)
+	{
+		cout << pd1[i] << ": " << &pd1[i];
+		cout<<pd2[i] << ": " << &pd2[i] << endl;
+	}
+	return 0;
+}
+//注：butter指定静态内存，而delete只能用于指向常规new运算符指定的heap内存。
+
+9.3 名称空间
