@@ -22,3 +22,7 @@ c++类
 大部分可见物体都来自于actor
 uproperty
 spawn 创建与再生物体
+
+错误日志#1
+构建unbreakableblock时无法读取Aunbreakableblock
+class
