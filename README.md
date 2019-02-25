@@ -15,3 +15,10 @@ W/E/R 移动旋转缩放 （注意与C4D：ERT出入）
 keyboard M multiply 混合？
           T 调整uv (密度
           A add （相当于贴图应用多少 大概ps里的流量?
+构建光线：对预计算光线构造进行存储，（例如光线贴图、阴影贴图
+
+c++类
+前缀A代表继承自actor
+大部分可见物体都来自于actor
+uproperty
+spawn 创建与再生物体
