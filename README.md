@@ -26,3 +26,6 @@ spawn 创建与再生物体
 错误日志#1
 构建unbreakableblock时无法读取Aunbreakableblock
 class
+
+
+bindaxis(轴映射，持续按键盘控制 与bindaction（按一下
