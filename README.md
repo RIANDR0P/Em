@@ -69,3 +69,99 @@ display-block/inline incline-block
 modern flow float layer
 float 浮动
 sans-serif 英文字体设置
+
+
+
+
+
+
+
+
+
+全局配置 app.json   //即全局样式 pages等为局部样式
+        页面路径 界面表现 网络超时时间 底部tap
+        pages 描述所有界面路径
+        windows 所有界面的顶部背景颜色 文字背景定义
+工具配置 project.config.json
+
+json 语法
+        json的文件被包含于大括号中，通过key-value表达数据。key必须被包含于一个双引号中
+   json值的数据格式
+   数字
+   字符串
+   bool值
+   数组
+   对象
+   Null   
+   //json文件无法使用注释
+   
+WXML  充当html作用
+        view button text 等
+   //渲染与逻辑分离 （不再利用js记录用户行为，传递到dom api引起用户界面改变，让js管理状态
+ wxml:   <text> {{msg}} </text>
+ json:  this.setData({msg:'Hello World'})
+ 通过{{}}将变量绑定到界面上，称之为数据绑定
+ 
+ Wxss css 
+ JS 交互
+ 例如：更改msg文件内容为hello world
+ <view> {{ msg }} </view>
+ <button bindtap="clickMe">点击我</button>
+ 在js文件里申明clickMe 方法
+ page({
+        clickMe(){
+        this.setData({msg:'hello world'})
+        }
+      })
+      
+      
+小程序宿主环境 
+逻辑层 （js)
+渲染层 （wxml wxss)
+
+渲染层 界面利用WebView 渲染
+逻辑层 jsCore                     //native 代指微信客户端、
+利用native作中转
+
+程序与界面 
+微信打开小程序 前 下载代码包到本地
+利用 app.json 里的pages 了解所有界面路径
+        其中 pages中第一个页面为首页
+        
+开发史
+js-SDK
+主要面对两大操作系统
+
+json语法{//用大括号框起
+"名称":"key",//名称与名称之间用逗号分隔
+}
+
+wxml 
+//大小写敏感
+//属性值也可以动态改变但必须包含于双引号中
+//未被定义变量或是设置值为undefined值不会输出到wxml中
+
+条件逻辑
+        是否渲染 wx:if="{{condition}}
+    使用wx:elif,wx:else添加else块
+        //可利用标签将多组件包装一起判断
+        
+<block wx:if="{{true}}>
+              <view>view1</view>
+              <view>view2</view>
+</block>    
+    使用wx:for对组件重复渲染
+        默认数组当前下标变量名：item
+        默认数组当前元素变量名：index                   
+     使用wx:key指定项目中唯一的标识符内容
+         wx:key的值以两种形式提供
+              字符串:代表在for循环中的array某个item的property，该值为列表中唯一的字符串或数字，且不能被改变
+              保留关键词this 代笔在for循环中item本身(需要item本身为唯一的字符串或数字
+
+template 模板
+    定义代码片段，在不同地方引用
+    使用is属性声明需要的模板，然后将所需数据传入
+引用 import和include
+import 不具有递归属性
+include 可以将目标文件中除了 <template/> <wxs/> 外的整个代码引入，相当于拷贝代码
+        
