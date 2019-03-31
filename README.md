@@ -164,4 +164,82 @@ template 模板
 引用 import和include
 import 不具有递归属性
 include 可以将目标文件中除了 <template/> <wxs/> 外的整个代码引入，相当于拷贝代码
+       
+界面布局       
+flex
+    约定：布局元素（容器） container(类名) 容器内元素（项目） item表示项目类名
+    
+    
+    
+wxss
+    尺寸单位rpx
+    尺寸换算：宽度为375物理像素的屏幕下，1rpx = 1px
+    样式引用
+    内联样式 
+    选择器
+        类选择器 .class
+        id选择器 #id
+        元素选择器 element
+        伪元素选择器 ::after 在view组件后面插入内容
+                    ::before 在view组件前面插入内容
+         权重优先级：
+                !important  无限大
+                style="" 1000
+                #id     100
+                .class  10
+                element 1
+ECMAscript      标准化脚本程序设计语言   javascript为其一种实现。
+//浏览器中 javascript分为  ECMAscript BOM(浏览器对象类型) DOM(文档对象类型)
+//NodeJS 中              ECMAscript NPM native
+//小程序                   ECMAscript 小程序框架 小程序API
+       //没有DOM BOM 因而JQuery、Zepto这种浏览器类库无法运行
+遵循 ECMAscript5  ECMAscript6标准
+        小程序IDE提供两者的转换标准 
         
+模块化
+可将JavaScript 文件作为一个模块，通过module.exports 或者 exports 对外暴露接口
+小程序的脚本执行顺序
+        入口文件为app.js
+        由require文件顺序决定加载顺序
+        
+作用域
+        与JQuary相似
+        文件中定义的函数和变量只在当前文件有效
+        使用getApp()获取全局变量
+        
+渲染与逻辑
+1.渲染层与数据相关
+2.逻辑层负责产生、处理数据
+3.逻辑层通过Page的setData方法将数据传递至渲染
+数据驱动
+wxml对象和js可以看作是DOM树
+{name:"view",
+children:[
+        {text: "hello world"}
+        ]
+       }
+ 
+ //下使用app来代替代码层面的程序概念
+ 利用App()来注册程序App,其他js脚本可使用宿主环境提供的getApp()来获取程序实例
+ App({
+  onLaunch: function(options) {},
+  onShow: function(options) {},
+  onHide: function() {},
+  onError: function(msg) {},
+  globalData: 'I am global data'
+})
+其中onLaunch / onShow / onHide 三个回调是App实例的生命周期函数
+onLaunch 当小程序初始化完成时，会触发onLaunch（全局只触发一次
+onShow 当小程序启动，或从后台切回前台时触发
+onHide 前台进入后台触发
+onError 脚本错误或调用API 失败
+
+程序的生命周期
+初次打开小程序时，微信客户端初始化好宿主环境，下载小程序的代码包注入到宿主环境，初始化环境后调用onLaunch函数
+home键或右上角退出小程序并未销毁（程序进入后台 onHide方法被调用
+再次打开 onShow方法被调用
+打开方式被分配给options函数
+        app({
+        onLounch:function {console.log(options)},
+        onShow:function {console.log(options)}
+        })
