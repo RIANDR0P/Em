@@ -243,3 +243,122 @@ home键或右上角退出小程序并未销毁（程序进入后台 onHide方法
         onLounch:function {console.log(options)},
         onShow:function {console.log(options)}
         })
+小程序全局数据
+App实例是单例的，不同页面直接可以通过App实例下的属性来共享数据
+App({
+        globalData:"I am globalData"
+        })
+    other.js
+var appInstance=getApp()
+console.log(appInstance.globalData)
+
+页面
+//默认Pages字段的第一个页面为主页
+
+Page构造器
+Page({
+  data: { text: "This is page data." },
+  onLoad: function(options) { },
+  onReady: function() { },
+  onShow: function() { },
+  onHide: function() { },
+  onUnload: function() { },
+  onPullDownRefresh: function() { },
+  onReachBottom: function() { },
+  onShareAppMessage: function () { },
+  onPageScroll: function() { }
+})
+
+生命周期函数
+onload 初次加载
+onReady 初次渲染完成
+onShow 监听页面显示，触发早于onReady
+onHide 监听页面隐藏
+onUnload 卸载
+onPullDownRefresh 监听用户下拉
+onReachBottom 上拉处理事件
+onShareAppMessage 右上角转发
+onPageScroll 页面滚动函数
+初次加载 onLoad方法被调用，Page未被销毁则仅调用一次，回调时获取当前页面的打开参数option
+当前页面使用wx.redirectTo或wx.navigateBack返回到其他页时，当前页面会被微信客户端销毁回收，此时Page构造器参数所定义的onUnload方法会被调用
+
+// pages/list/list.js
+// 列表页使用navigateTo跳转到详情页
+wx.navigateTo({ url: 'pages/detail/detail?id=1&other=abc' })
+
+// pages/detail/detail.js
+Page({
+  onLoad: function(option) {
+        console.log(option.id)
+        console.log(option.other)
+  }
+})
+页面路径用？分割path和query部分，query多参数用&分割
+page构造器里onLoad里option可以拿到当前页面打开参数，类型为Object,键值与界面URL上query 值一一对应
+
+页面数据
+wxml通过数据绑定的方法绑定从逻辑层传来的数据字段，数据即Page里data,data参数是页面第一次渲染时从逻辑层传到渲染层
+setData函数，可以在Page实例下的方法调用this.setData把数据传递给渲染层更新数据，由于渲染与逻辑是两个线程，传递数据相当于异步过程，setData第二个参数callBack回调，在这次setData渲染完毕后触发。
+Page({
+  onLoad: function(){
+    this.setData({
+      text: 'change data'
+    }, function(){
+      // 在这次setData对界面渲染完毕后触发
+    })
+  }
+})
+
+注意事项：
+直接修改 Page实例的this.data 而不调用 this.setData 是无法改变页面的状态的，还会造成数据不一致。
+由于setData是需要两个线程的一些通信消耗，为了提高性能，每次设置的数据不应超过1024kB。
+不要把data中的任意一项的value设为undefined，否则可能会有引起一些不可预料的bug。
+
+页面的用户行为
+onPullDownRefresh 下拉刷新
+需要在app.json的window选项中或页面配置page.json中设置enablePullDownRefresh为true。当处理完数据刷新后，wx.stopPullDownRefresh可以停止当前页面的下拉刷新
+
+Page({
+onShareAppMessage: function () {
+ return {
+   title: '自定义转发标题',
+   path: '/page/user?id=123'
+ }
+}
+})
+等等...
+
+页面跳转
+使用 wx.navigateTo({ url: 'pageD' }) 可以往当前页面栈多推入一个 pageD，此时页面栈变成 [ pageA, pageB, pageC, pageD ]。
+使用 wx.navigateBack() 可以退出当前页面栈的最顶上页面，此时页面栈变成 [ pageA, pageB, pageC ]。
+使用wx.redirectTo({ url: 'pageE' }) 是替换当前页变成pageE，此时页面栈变成 [ pageA, pageB, pageE ]，当页面栈到达10层没法再新增的时候，往往就是使用redirectTo这个API进行页面跳转。
+多页面的生命周期等等。详见https://developers.weixin.qq.com/ebook?action=get_post_info&docid=0004eec99acc808b00861a5bd5280a
+
+组件
+API
+多数API挂在wx
+wx.on* 监听某个事件发生 接受一个Callback参数，当事件触发，调用Callback函数
+wx.get* 获取宿主环境数据的接口
+wx.set* 写入数据到宿主环境
+
+接口回调
+success 调用成功
+fail 调用失败
+complete 调用完成（无论结果
+
+事件
+<view id="tapTest" data-hi="WeChat" bindtap="tapName"> Click me! </view>
+
+// page.js
+   Page({
+  tapName: function(event) {
+    console.log(event)
+  }
+})
+
+事件通过bindtao绑定到组件上，在Page中定义对应的事件处理函数，当触发事件，处理函数执行，同时受到一个事件对象event
+
+事u件绑定与冒泡捕获
+key以bind或catch开头，后跟上事件类型
+bind 和capture-bind 分别表示事件的冒泡阶段和捕获阶段（捕获在前
+catch可以阻止事件向上冒泡
