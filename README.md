@@ -368,3 +368,5 @@ flex-direction 属性 设置坐标轴方向
 flex-wrap 设置是否允许多行排列及方式
 justify-content 在主轴上对齐方式，及项目间是否空隙
 align-items 在行中对齐方式
+
+.container
