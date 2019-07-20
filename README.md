@@ -265,3 +265,79 @@ int main()
 //注：butter指定静态内存，而delete只能用于指向常规new运算符指定的heap内存。
 
 9.3 名称空间
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//查找最大子列和
+#include<stdio.h>
+#define MAX 100000
+int MaxSubsequSum(int a[], int num);
+int firstnum, lastnum;
+
+int main() {
+	int num,max;
+	int a[MAX];
+
+	scanf("%d", &num);
+	for (int i = 0; i < num; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	max=MaxSubsequSum(a, num);
+	printf("%d %d %d", max,firstnum,lastnum);
+	return 0;
+}
+
+int MaxSubsequSum(int a[], int num) {
+	int thisSum, maxSum;
+	int flag = 0;
+
+	firstnum = a[0]; lastnum = a[num - 1];
+	thisSum = maxSum = 0;
+
+
+	for (int i = 0; i < num; i++) {
+		thisSum += a[i];
+		if (a[i] == 0) flag = 1;
+		if (thisSum > maxSum)
+		{
+			if (thisSum - a[i] == 0)
+				firstnum = a[i];
+			maxSum = thisSum;
+			lastnum = a[i];
+		}
+		else if (thisSum < 0)
+			thisSum = 0;
+	}
+	if (flag&&maxSum == 0)
+		firstnum = lastnum = 0;
+	return maxSum;
+}
