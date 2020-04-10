@@ -1,3 +1,4 @@
+CHAPTER 1
 1.
 2.
 3.计算机分为两部分：
@@ -83,7 +84,8 @@
     JDK 和 JRE是单独两个软件，JDK一般自带JRE,JDK开发，JRE测试/运行
     JDK目录介绍：
       JDK/bin:存放很多命令，如Javac.exe,java.exe
-      
+  
+  -编译
    *javac命令是否可用?
       打开DOS,直接输入javac,回车。出现如：'javac'不是内部或外部命令，也不是可运行的程序或批处理文件。
       问题原因：Windows无法找到javac
@@ -94,8 +96,113 @@
       都搜索不到，则报以上错误。
    *path环境变量配置
     将javac所在目录配置到环境变量中。
+   
+  -运行
+   *java HelloWorld 执行原理？
+    java.ex启动JVM
+    JVM启动后启动类加载器ClassLoader
+    ClassLoader搜索HelloWorld.class字节码文件
+    找到则执行，找不到则报错
     
+   *ClassLoader如何搜索.class文件?
+    未配置classpath默认从当前路径下加载.class文件
+    或者让ClassLoader去指定路径记载，需要配置环境变量classpath
+    classpath环境变量属于java语言中环境变量，不属于Windows操作系统【path环境变量属于操作系统】
+    设置环境变量后打开DOS在任意位置都可执行java HelloWorld
     
+   classpath=.
+    .代表当前目录
+    ..代表上级目录
+    
+14.注释
+    注释不会被编译到.class字节码文件中
+    编写注释可以使程序的可读性增强。
+    
+    写法
+   1.单行注释
+    //注释当行
+   2.多行注释
+    /*
+      ......
+    */
+   3.javadoc注释
+    /**
+    * javadoc注释
+    * javadoc注释
+    * javadoc注释
+    */
+    可被javadoc.exe解析提取并生成帮助文档（理解为说明书）
+    
+15.解析
+  public 表示公开的
+  class表示定义一个类
+  HelloWorld表示一个类名
+  
+  public class HelloWorld {   //定义一个公开的类，起名HelloWorld
+  //类体
+  //类体中不允许直接编写java语句【除声明变量之外】
+
+    public  static  void  main(String[] args){    
+    //表示定义一个公开的静态的"主方法"，程序的执行入口  (String[] args)是一个main方法的形式参数列表
+    //方法体
+    //方法体
+        System.out.println("Hello Word");    //向控制台输出一段消息
+    }
+}
+
+主方法是程序的执行入口
+方法体中可以编写多条java语句
+
+16.public class 和 class区别
+  一个java源文件中可定义多个class
+  一个java源文件不一定有public
+  一个class生成一个xxx.class文件
+  一个java源文件当中定义公开的类，public的class只能有一个，并且类名称必须与java源文件名称一致
+  每一个class都可以编写main方法，设定程序的入口，想执行B.class中的主方法，执行 java B
+  想执行java Hello, Hello.class中必须要有主方法
+  
+17.第一章重点
+*搭建java环境
+*独立编写HelloWorld
+*掌握path原理和如何配置
+*掌握classpath原理和如何配置
+*注释
+*public class 和 class 的区别
+
+
+
+CHAPTER 2
+暂时跳过
+主要内容
+  *标识符
+  *关键字
+  *字面值
+  *变量
+  *数据类型
+  *二进制
+  *字符编码
+  *运算符
+  *控制语句
+  *方法
+  *递归
+
+CHAPTER 3 面向对象
+ *面向过程和面向对象的区别
+  面向过程
+    没有独立体的概念，以因果关系为核心，关注实现的具体过程。【集成显卡开发思路】
+    -优点：业务逻辑较简单的程序快速开发。
+    -缺点：耦合度高，一环出问题，整个系统受影响，导致最终软件“扩展力”差。另外，没有独特体概念，无法达到组件复用。
+  面向对象
+    关注独立个体【对象】能完成哪些功能。每个独立体都是一个对象。关联弱。低耦合，高扩展力。【独立显卡开发思路】
+    -优点：耦合度低，扩展力强。更易解决复杂的业务逻辑。组件复用性强。
+    -缺点：前期投入成本较高，需要进行独立体的抽取，大量的系统分析与设计。
+    
+    c语言：纯面向过程，c++半面向对象，java纯面向对象
+    面向对象更符合人的思维方式。
+    
+ *类和对象的三大特征
+ *类和对象的概念
+
    
      
     
